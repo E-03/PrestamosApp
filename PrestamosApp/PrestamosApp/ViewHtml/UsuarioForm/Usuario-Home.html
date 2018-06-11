@@ -1,0 +1,53 @@
+﻿<h2>Detalles de usuarios</h2>
+<a href="#"><strong>Home</strong></a>
+<div class="panel panel-primary">
+
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-md-8">
+                <b>Nuevo Usuario</b>
+            </div>
+            <div class="col-md-4">
+                <div>
+                    <input type="text" class="form-control" ng-model="search" placeholder="Buscar" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div ng-controller="HomeController as vm" ng-init="vm.GetAll()">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Cédula</th>
+                        <th>Dirección</th>
+                        <th>>>Opción<<</th>
+                        <th>>>Opción<<</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="dato in usuario | filter: search">
+                        <td>{{dato.Id}}</td>
+                        <td>{{dato.Nombre}}</td>
+                        <td>{{dato.Apellido}}</td>
+                        <td>{{dato.Cedula}}</td>
+                        <td>{{dato.Direccion}}</td>
+                        <!--<td><input type="button" name="Editar" value="Editar" ng-click="vm.GetById(dato.Id)" class="btn btn-warning" /></td>-->
+                        <td><a href="#!/UsuarioEdit/{{dato.Id}}"><input type="button" name="name" value="Editar" ng-click = "vm.GetById(dato.Id)" class="btn btn-warning"/></a></td>
+                        <td><input type="button" name="Eliminar" value="Eliminar" class="btn btn-danger" ng-click="vm.EliminarUsuario(dato.Id)" /></td>
+                    </tr>
+                </tbody>
+            </table>  
+        </div>
+        {{ver}}
+    </div>
+    <div class="panel-footer">
+        <div class="text-center"><b>Prestamos</b></div>
+        <div class="text-right">
+            <ul uib-pagination total-items="totalItems" max-size="10" ng-model="currentPage" ng-change="pageChanged()" items-per-page="10"></ul>
+        </div>
+    </div>
+</div>

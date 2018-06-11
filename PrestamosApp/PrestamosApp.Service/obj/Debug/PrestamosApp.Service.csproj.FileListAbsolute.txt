@@ -1,0 +1,15 @@
+C:\Users\efabal\source\repos\PrestamosApp\PrestamosApp.Service\bin\Debug\PrestamosApp.Service.dll.config
+C:\Users\efabal\source\repos\PrestamosApp\PrestamosApp.Service\bin\Debug\PrestamosApp.Service.dll
+C:\Users\efabal\source\repos\PrestamosApp\PrestamosApp.Service\bin\Debug\PrestamosApp.Service.pdb
+C:\Users\efabal\source\repos\PrestamosApp\PrestamosApp.Service\bin\Debug\EntityFramework.dll
+C:\Users\efabal\source\repos\PrestamosApp\PrestamosApp.Service\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\efabal\source\repos\PrestamosApp\PrestamosApp.Service\bin\Debug\PrestamosApp.Model.dll
+C:\Users\efabal\source\repos\PrestamosApp\PrestamosApp.Service\bin\Debug\PrestamosApp.Model.pdb
+C:\Users\efabal\source\repos\PrestamosApp\PrestamosApp.Service\bin\Debug\PrestamosApp.Model.dll.config
+C:\Users\efabal\source\repos\PrestamosApp\PrestamosApp.Service\bin\Debug\EntityFramework.xml
+C:\Users\efabal\source\repos\PrestamosApp\PrestamosApp.Service\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\efabal\source\repos\PrestamosApp\PrestamosApp.Service\obj\Debug\PrestamosApp.Service.csprojResolveAssemblyReference.cache
+C:\Users\efabal\source\repos\PrestamosApp\PrestamosApp.Service\obj\Debug\PrestamosApp.Service.csproj.CoreCompileInputs.cache
+C:\Users\efabal\source\repos\PrestamosApp\PrestamosApp.Service\obj\Debug\PrestamosApp.Service.csproj.CopyComplete
+C:\Users\efabal\source\repos\PrestamosApp\PrestamosApp.Service\obj\Debug\PrestamosApp.Service.dll
+C:\Users\efabal\source\repos\PrestamosApp\PrestamosApp.Service\obj\Debug\PrestamosApp.Service.pdb

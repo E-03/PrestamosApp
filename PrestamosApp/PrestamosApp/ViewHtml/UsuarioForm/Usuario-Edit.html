@@ -1,0 +1,20 @@
+﻿<h2><b>Editar Usuario</b></h2>
+<div class="panel panel-primary">
+    <div ng-controller="HomeController as vm">
+        <form ng-submit="vm.ActualizarUsuario(usuario.Id);">
+            <div class="panel-heading"><b>Editar Usuario</b></div>
+            <div class="panel-body">
+                <label>Id</label><input type="text" name="Id" value="" placeholder="Id" class="form-control" ng-model="usuario.Id" disabled="disabled"/><br />
+                <label>Nombre</label><input type="text" name="nombre" value="" placeholder="Nombre" class="form-control" ng-model="usuario.Nombre" /><br />
+                <label>Apellido</label><input type="text" name="apellido" value="" placeholder="Apellido" class="form-control" ng-model="usuario.Apellido" /><br />
+                <label>Cedula</label><input type="text" name="cedula" value="" placeholder="Cedula" class="form-control" ng-model="usuario.Cedula" /><br />
+                <label>Direccion</label><input type="text" name="direccion" value="" placeholder="Direccion" class="form-control" ng-model="usuario.Direccion" /><br />
+            </div>
+            <div class="panel-footer">
+                <div class="text-center">
+                    <input type="submit" name="Editar" value="Editar" class="btn btn-warning" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

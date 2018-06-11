@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbPracticaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="DetallePrestamo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="MontoPrestado" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Ganancia" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="FechaDePago" Type="DateTime" Precision="3" />
+    <Property Name="PrestamoId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Prestamo" Relationship="Self.FK__DetallePr__Prest__5165187F" FromRole="DetallePrestamo" ToRole="Prestamo" />
+  </EntityType>
+  <EntityType Name="Estatus">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NombreEstatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Prestamo" Relationship="Self.FK__Prestamo__Estatu__4D94879B" FromRole="Estatus" ToRole="Prestamo" />
+  </EntityType>
+  <EntityType Name="Prestamo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CodigoPrestamo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="FechaSolicitud" Type="DateTime" Precision="3" />
+    <Property Name="FechaTermino" Type="DateTime" Precision="3" />
+    <Property Name="Estado" Type="Boolean" />
+    <Property Name="EstatusId" Type="Int32" />
+    <Property Name="UsuarioId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="DetallePrestamo" Relationship="Self.FK__DetallePr__Prest__5165187F" FromRole="Prestamo" ToRole="DetallePrestamo" />
+    <NavigationProperty Name="Estatus" Relationship="Self.FK__Prestamo__Estatu__4D94879B" FromRole="Prestamo" ToRole="Estatus" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK__Prestamo__Usuari__4E88ABD4" FromRole="Prestamo" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Cedula" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="Direccion" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Prestamo" Relationship="Self.FK__Prestamo__Usuari__4E88ABD4" FromRole="Usuario" ToRole="Prestamo" />
+  </EntityType>
+  <Association Name="FK__DetallePr__Prest__5165187F">
+    <End Role="Prestamo" Type="Self.Prestamo" Multiplicity="1" />
+    <End Role="DetallePrestamo" Type="Self.DetallePrestamo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Prestamo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DetallePrestamo">
+        <PropertyRef Name="PrestamoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Prestamo__Estatu__4D94879B">
+    <End Role="Estatus" Type="Self.Estatus" Multiplicity="0..1" />
+    <End Role="Prestamo" Type="Self.Prestamo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estatus">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Prestamo">
+        <PropertyRef Name="EstatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Prestamo__Usuari__4E88ABD4">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="Prestamo" Type="Self.Prestamo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Prestamo">
+        <PropertyRef Name="UsuarioId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="dbPracticaEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="DetallePrestamo" EntityType="Self.DetallePrestamo" />
+    <EntitySet Name="Estatus" EntityType="Self.Estatus" />
+    <EntitySet Name="Prestamo" EntityType="Self.Prestamo" />
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+    <AssociationSet Name="FK__DetallePr__Prest__5165187F" Association="Self.FK__DetallePr__Prest__5165187F">
+      <End Role="Prestamo" EntitySet="Prestamo" />
+      <End Role="DetallePrestamo" EntitySet="DetallePrestamo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Prestamo__Estatu__4D94879B" Association="Self.FK__Prestamo__Estatu__4D94879B">
+      <End Role="Estatus" EntitySet="Estatus" />
+      <End Role="Prestamo" EntitySet="Prestamo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Prestamo__Usuari__4E88ABD4" Association="Self.FK__Prestamo__Usuari__4E88ABD4">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Prestamo" EntitySet="Prestamo" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
