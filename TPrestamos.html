@@ -1,0 +1,185 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitudes de Prestamos</title>
+    <link href="Content/angucomplete-alt.css" rel="stylesheet" />
+    <link href="Content/Template/css/bootstrap.min.css" rel="stylesheet" />
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
+    <link href="Content/Template/css/plugins.css" rel="stylesheet" />
+    <link href="Content/Template/css/main.css" rel="stylesheet" />
+    <link href="Content/Template/css/themes.css" rel="stylesheet" />
+    <script src="Content/Template/js/vendor/modernizr-respond.min.js"></script>
+
+    <!--Mensajes  CSS-->
+    <link href="Content/sweetalert-master/sweetalert.css" rel="stylesheet" />
+    <link href="Content/toastr.min.css" rel="stylesheet" />
+</head>
+<body data-ng-app="PrestamosApp">
+    <div id="page-wrapper" class="page-loading">
+        <div class="preloader">
+            <h1 class="push-top-bottom text-light text-center"><strong>P</strong>restamo</h1>
+            <div class="inner">
+                <h3 class="text-light"><strong>Cargando..</strong></h3>
+                <div class="preloader-spinner hidden-lt-ie9 hidden-lt-ie10">
+                </div>
+            </div>
+        </div>
+        <div id="page-container" class="sidebar-partial sidebar-no-animations sidebar-visible-lg">
+            <div id="sidebar">
+                <div id="sidebar-scroll">
+                    <div class="sidebar-content">
+                        <a href="#" class="sidebar-brand">
+                            <i class="gi gi-flash"></i><span class="sidebar-nav-mini-hide"><strong>P</strong>restamo</span>
+                        </a>
+                        <div class="sidebar-section sidebar-user clearfix sidebar-nav-mini-hide">
+                            <div class="sidebar-user-avatar">
+                                <a href="#">
+
+                                    <img src="Content/Template/img/placeholders/avatars/avatar2.jpg" alt="avatar" />
+                                </a>
+                            </div>
+                            <div class="sidebar-user-name">Eber Fabal</div>
+                            <div class="sidebar-user-links">
+                                <!--@*<a href="page_ready_user_profile.html" data-toggle="tooltip" data-placement="bottom" title="Profile"><i class="gi gi-user"></i></a>
+                                <a href="page_ready_inbox.html" data-toggle="tooltip" data-placement="bottom" title="Messages"><i class="gi gi-envelope"></i></a>
+                                <a href="javascript:void(0)" class="enable-tooltip" data-placement="bottom" title="Settings" onclick="$('#modal-user-settings').modal('show');"><i class="gi gi-cogwheel"></i></a>*@-->
+                                <a href="#" data-toggle="tooltip" data-placement="bottom" title="Logout"><i class="gi gi-exit"></i> Salir</a>
+                            </div>
+                        </div>
+
+
+                        <ul class="sidebar-nav">
+                            <li>
+                                <a href="#"><i class=""></i><span class="sidebar-nav-mini-hide"><i class="gi gi-home sidebar-nav-icon"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Inicio</span></a>
+                            </li>
+                            <li>
+                                <a href="#" class="sidebar-nav-menu"><i class="fa fa-angle-left sidebar-nav-indicator sidebar-nav-mini-hide"></i><i class="gi gi-user sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Usuario</span></a>
+                                <ul>
+                                    <li>
+                                        <a href="#!/UsuarioNew"><i class=""></i><span class="sidebar-nav-mini-hide">Nuevo Usuario</span></a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#" class="sidebar-nav-menu"><i class="fa fa-angle-left sidebar-nav-indicator sidebar-nav-mini-hide"></i><i class="gi gi-money sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Prestamos</span></a>
+                                <ul>
+                                    <li>
+                                        <a href="#!/PrestamoNew"><i class=""></i><span class="sidebar-nav-mini-hide">Nuevo Prestamo</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="/AutorizarFactura/PendienteFacturacion"><i class=""></i><span class="sidebar-nav-mini-hide">Prestamos Pendientes</span></a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#" class="sidebar-nav-menu"><i class="fa fa-angle-left sidebar-nav-indicator sidebar-nav-mini-hide"></i><i class="gi gi-cogwheels sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Reportes</span></a>
+                                <ul>
+                                    <li>
+                                        <a target="_blank" href="http://mardom-sql-srv01/ReportServer/Pages/ReportViewer.aspx?%2fGlobal+Mardom%2fFacturacion%2fFacturasAprobadas&rs:Command=Render&codempresa=@HttpContext.Current.Session[" CodigoEmpresa"]&codepartamento=@HttpContext.Current.Session["CodigoDepartamento"]"><i class=""></i><span class="sidebar-nav-mini-hide">Facturas Aprobadas</span></a>
+                                    </li>
+                                    <li>
+                                        <a target="_blank" href="http://mardom-sql-srv01/ReportServer/Pages/ReportViewer.aspx?%2fGlobal+Mardom%2fFacturacion%2fFacturasPendienteByDestinatario&rs:Command=Render&codempresa=@HttpContext.Current.Session[" CodigoEmpresa"]&codepartamento=@HttpContext.Current.Session["CodigoDepartamento"]"><i class=""></i><span class="sidebar-nav-mini-hide">Facturas Pendiente Aprobación</span></a>
+                                    </li>
+                                    <li>
+                                        <a target="_blank" href="http://mardom-sql-srv01/ReportServer/Pages/ReportViewer.aspx?%2fGlobal+Mardom%2fFacturacion%2fFacturasAprobadasIndicador&rs:Command=Render&codempresa=@HttpContext.Current.Session[" CodigoEmpresa"]&codepartamento=@HttpContext.Current.Session["CodigoDepartamento"]"><i class=""></i><span class="sidebar-nav-mini-hide">Indicador Tiempo Facturas Aprobadas</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="http://mardom-sql-srv01/reports/report/Global%20Mardom/Facturacion/FacturasSeleccionPagada" target="_bank">Facturas Pagadas</a>
+                                    </li>
+                                    <li>
+                                        <a href="http://mardom-sql-srv01/reports/report/Global%20Mardom/Facturacion/FacturasListaDePago" target="_bank">Facturas Lista Pago</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="http://192.168.50.5:8025/mardom/mardom"><i class="fa fa-backward fa-fw"></i>Volver página principal</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div id="main-container">
+                <header class="navbar navbar-inverse">
+                    <ul class="nav navbar-nav-custom">
+                        <li>
+                            <a href="javascript:void(0)" onclick="App.sidebar('toggle-sidebar');this.blur();">
+                                <i class="fa fa-bars fa-fw"></i>
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="gi gi-settings"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-custom dropdown-options">
+                                <li class="dropdown-header text-center">Header Style</li>
+                                <li>
+                                    <div class="btn-group btn-group-justified btn-group-sm">
+                                        <a href="javascript:void(0)" class="btn btn-primary" id="options-header-default">Light</a>
+                                        <a href="javascript:void(0)" class="btn btn-primary" id="options-header-inverse">Dark</a>
+                                    </div>
+                                </li>
+                                <li class="dropdown-header text-center">Page Style</li>
+                                <li>
+                                    <div class="btn-group btn-group-justified btn-group-sm">
+                                        <a href="javascript:void(0)" class="btn btn-primary" id="options-main-style">Default</a>
+                                        <a href="javascript:void(0)" class="btn btn-primary" id="options-main-style-alt">Alternative</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+
+                    </ul>
+
+                </header>
+
+                <div id="page-content">
+                    <div ng-view></div>
+                </div>
+                <footer class="clearfix">
+                    <div class="pull-right">
+                        Crafted with <i class="fa fa-heart text-danger"></i> by <a>desarrollo</a>
+                    </div>
+                    <div class="pull-left">
+
+                    </div>
+                </footer>
+
+            </div>
+        </div>
+    </div>
+    <a href="#" id="to-top"><i class="fa fa-angle-double-up"></i></a>
+
+    <script src="Content/Template/js/vendor/jquery-1.12.0.min.js"></script>
+    <script src="Content/Template/js/vendor/bootstrap.min.js"></script>
+    <script src="Content/Template/js/plugins.js"></script>
+    <script src="Content/Template/js/app.js"></script>
+
+
+    <!--Angular File-->
+    <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/angular-route.min.js"></script>
+
+    <!--Mensajes  JS-->
+    <script src="Content/sweetalert-master/sweetalert.min.js"></script>
+    <script src="Scripts/toastr.min.js"></script>
+
+    <!--Route Del Usuario-->
+    <script src="ScriptApp/App/PrestamosApp.js"></script>
+    <script src="ViewHtml/UsuarioForm/Route.Usuario.js"></script>
+    <!--Route Del Prestamo-->
+    <script src="ViewHtml/PrestamoForm/Route.Prestamo.js"></script>
+
+    <!--Bootstrap.ui-->
+    <script src="Scripts/angular-ui/ui-bootstrap-tpls.min.js"></script>
+
+    <!--Controller Del Usuario-->
+    <script src="ViewHtml/UsuarioForm/UsuarioHomeC.js"></script>
+
+    <!--Servicio Del Usuario-->
+    <script src="ViewHtml/UsuarioForm/UsuarioHomeS.js"></script>
+
+</body>
+</html>
+
